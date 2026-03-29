@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: Jain-Lai-backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/sword_of_coming?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update   # use 'validate' in production
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+server:
+  port: 8080
+
