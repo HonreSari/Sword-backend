@@ -11,11 +11,10 @@ public class SecurityConfig {
   // ✅ TEMPORARY: Allow all requests (for development/testing)
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http
-        .csrf(csrf -> csrf.disable()) // Disable CSRF for API testing
-        .authorizeHttpRequests(auth -> auth
-            .anyRequest().permitAll() // ✅ Allow all endpoints (temporarily)
-        );
+    http.csrf(csrf -> csrf.disable()) // Disable CSRF for API testing
+        .authorizeHttpRequests(
+            auth -> auth.anyRequest().permitAll() // ✅ Allow all endpoints (temporarily)
+            );
     return http.build();
   }
 }

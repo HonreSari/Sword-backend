@@ -7,20 +7,23 @@ spring:
     password: admin
   jpa:
     hibernate:
-      ddl-auto: update # use 'validate' in production
+      ddl-auto: update 
     show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+  # --- CORRECTION START ---
   data:
-      redis:
-        host: localhost
-        port: 6379
-        # password: your_password (if any)
-  cache:
-    type: redis
     redis:
-      time-to-live: 1800000  # 30 minutes TTL
+      host: localhost
+      port: 6379
+      # password: your_password 
+  # --- CORRECTION END ---
+  cache:
+    type: simple 
+    redis:
+      time-to-live: 1800000 # 30 minutes in milliseconds
+      cache-null-values: false # Good practice to avoid caching nulls
 
 server:
   port: 8080

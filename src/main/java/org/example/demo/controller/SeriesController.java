@@ -18,8 +18,7 @@ public class SeriesController {
 
   @GetMapping
   public ResponseEntity<PageResponseDTO<SeriesListDTO>> listSeries(
-      @RequestParam(defaultValue = "0") int page,
-      @RequestParam(defaultValue = "12") int size) {
+      @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "12") int size) {
 
     var result = seriesService.getAllSeries(page, size);
     return ResponseEntity.ok(PageResponseDTO.from(result));
