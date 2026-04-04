@@ -1,7 +1,7 @@
 package org.example.demo.Dto.series;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import java.util.ArrayList; // ✅ Add this import
+import java.util.ArrayList; // ✅ Must import this
 import java.util.List;
 import org.example.demo.entity.Series;
 
@@ -24,7 +24,7 @@ public record SeriesListDTO(
         series.getRating(),
         series.getStatus(),
         series.getTotalEpisodes(),
-        // ✅ FIX: Copy to new ArrayList (breaks Hibernate proxy link)
+        // ✅ CRITICAL: Copy to new ArrayList (breaks Hibernate proxy)
         new ArrayList<>(series.getGenres()));
   }
 }
