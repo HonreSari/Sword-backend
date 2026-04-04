@@ -80,6 +80,9 @@ public class Series {
   @OneToMany(mappedBy = "series", cascade = CascadeType.ALL, orphanRemoval = true)
   private Set<Season> seasons = new HashSet<>();
 
+  @ManyToMany(mappedBy = "library", fetch = FetchType.LAZY)
+  private Set<User> likedByUsers = new HashSet<>();
+
   public void addSeason(Season season) {
     seasons.add(season);
     season.setSeries(this);

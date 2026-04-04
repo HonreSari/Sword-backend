@@ -1,4 +1,4 @@
-package org.example.demo.Dto.series;
+package org.example.demo.dto.series;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.Set;
 
 import org.example.demo.entity.Season;
 import org.example.demo.entity.Series;
-import org.example.demo.Dto.EpisodeListItemDTO;
+import org.example.demo.dto.EpisodeListItemDTO;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class")
 public record SeriesDetailDTO(
@@ -30,7 +30,6 @@ public record SeriesDetailDTO(
       return new SeasonDTO(
           season.getSeasonOrder(),
           season.getSeasonName(),
-          // ✅ FIX: Copy episodes list
           new ArrayList<>(
               Optional.ofNullable(season.getEpisodes())
                   .orElse(Set.of())
@@ -48,9 +47,7 @@ public record SeriesDetailDTO(
         series.getDescription(),
         series.getCoverImageUrl(),
         series.getRating(),
-        // ✅ FIX: Copy genres list
         new ArrayList<>(series.getGenres()),
-        // ✅ FIX: Copy seasons list
         new ArrayList<>(
             Optional.ofNullable(series.getSeasons())
                 .orElse(Set.of())

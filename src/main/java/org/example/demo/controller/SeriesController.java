@@ -1,9 +1,9 @@
 package org.example.demo.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.demo.Dto.PageResponseDTO;
-import org.example.demo.Dto.series.SeriesDetailDTO;
-import org.example.demo.Dto.series.SeriesListDTO;
+import org.example.demo.dto.PageResponseDTO;
+import org.example.demo.dto.series.SeriesDetailDTO;
+import org.example.demo.dto.series.SeriesListDTO;
 import org.example.demo.service.SeriesService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package org.example.demo.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.demo.Dto.EpisodeStreamDTO;
+import org.example.demo.dto.EpisodeStreamDTO;
 import org.example.demo.service.EpisodeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

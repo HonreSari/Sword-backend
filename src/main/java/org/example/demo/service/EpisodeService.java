@@ -1,7 +1,7 @@
 package org.example.demo.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.demo.Dto.EpisodeStreamDTO;
+import org.example.demo.dto.EpisodeStreamDTO;
 import org.example.demo.entity.Episode;
 import org.example.demo.exception.ResourceNotFoundException;
 import org.example.demo.repository.EpisodeRepo;

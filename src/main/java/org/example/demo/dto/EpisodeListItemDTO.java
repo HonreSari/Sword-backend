@@ -1,4 +1,4 @@
-package org.example.demo.Dto;
+package org.example.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.example.demo.entity.Episode;

@@ -1,3 +1,3 @@
-package org.example.demo.Dto;
+package org.example.demo.dto;
 
 public record LoginRequest(String username, String password) {}

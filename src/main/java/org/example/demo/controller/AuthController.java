@@ -1,8 +1,8 @@
 package org.example.demo.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.demo.Dto.LoginRequest;
-import org.example.demo.Dto.RegisterRequest;
+import org.example.demo.dto.LoginRequest;
+import org.example.demo.dto.RegisterRequest;
 import org.example.demo.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

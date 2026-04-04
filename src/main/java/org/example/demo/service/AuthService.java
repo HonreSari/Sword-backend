@@ -2,9 +2,9 @@ package org.example.demo.service;
 
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
-import org.example.demo.Dto.LoginRequest;
-import org.example.demo.Dto.RegisterRequest;
-import org.example.demo.Dto.UserResponseDTO;
+import org.example.demo.dto.LoginRequest;
+import org.example.demo.dto.RegisterRequest;
+import org.example.demo.dto.UserResponseDTO;
 import org.example.demo.entity.User;
 import org.example.demo.exception.ResourceNotFoundException;
 import org.example.demo.repository.UserRepository;

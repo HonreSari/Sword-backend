@@ -16,7 +16,6 @@ public class SecurityConfig {
 
   private final JwtAuthenticationFilter jwtAuthFilter;
 
-  // ✅ ADD THIS BEAN - Required for password encoding
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
@@ -31,9 +30,10 @@ public class SecurityConfig {
             .requestMatchers("/api/v1/auth/**").permitAll()
             .requestMatchers("/api/v1/series/**").permitAll()
             .requestMatchers("/api/v1/episodes/**").permitAll()
-            .requestMatchers("/api/v1/progress/**").authenticated()
-            .requestMatchers("/api/v1/library/**").authenticated()
+            .requestMatchers("/api/v1/progress/**").authenticated() // ✅ Protected
+            .requestMatchers("/api/v1/library/**").authenticated() // ✅ Protected
             .anyRequest().authenticated())
+        // ✅ CRITICAL: Add filter BEFORE UsernamePasswordAuthenticationFilter
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
     return http.build();

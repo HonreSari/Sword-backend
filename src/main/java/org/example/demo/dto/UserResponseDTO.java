@@ -1,4 +1,4 @@
-package org.example.demo.Dto;
+package org.example.demo.dto;
 
 import org.example.demo.entity.User;
 import java.util.Set;

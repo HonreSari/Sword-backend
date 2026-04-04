@@ -1,4 +1,4 @@
-package org.example.demo.Dto.series;
+package org.example.demo.dto.series;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.util.ArrayList; // ✅ Must import this

@@ -58,10 +58,7 @@ public class User {
   }
 
   @ManyToMany(fetch = FetchType.EAGER)
-  @JoinTable(
-      name = "users_roles",
-      joinColumns = @JoinColumn(name = "user_id"),
-      inverseJoinColumns = @JoinColumn(name = "role_id"))
+  @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
 
   // ✅ UPDATED: Simple VIP check (no expiry logic needed for MVP)
@@ -81,6 +78,26 @@ public class User {
       return true;
     }
     return false;
+  }
+  // ✅ In User.java - Add library relationship
+
+  @ManyToMany(fetch = FetchType.LAZY)
+  @JoinTable(name = "user_library", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "series_id"))
+  private Set<Series> library = new HashSet<>();
+
+  // ✅ Helper methods
+  public void addToLibrary(Series series) {
+    library.add(series);
+    series.getLikedByUsers().add(this); // bidirectional if Series has this
+  }
+
+  public void removeFromLibrary(Series series) {
+    library.remove(series);
+    series.getLikedByUsers().remove(this);
+  }
+
+  public boolean isInLibrary(Series series) {
+    return library.contains(series);
   }
 
   // === Getters & Setters ===

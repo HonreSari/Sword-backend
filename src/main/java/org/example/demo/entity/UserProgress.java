@@ -1,32 +1,49 @@
 package org.example.demo.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 import java.time.LocalDateTime;
-import lombok.Data;
 
 @Entity
-@Data
 @Table(name = "user_progress")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UserProgress {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @ManyToOne
-  @JoinColumn(name = "user_id", nullable = false)
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id", nullable = false) // ✅ Correct
   private User user;
 
-  @ManyToOne
-  @JoinColumn(name = "series_id", nullable = false)
-  private Series series;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "episode_id", nullable = false) // ✅ Correct
+  private Episode episode;
 
-  @ManyToOne
-  @JoinColumn(name = "last_episode_id") // Nullable if it's a novel
-  private Episode lastEpisode;
+  // ❌ DO NOT ADD series_id here! Episode already links to Series
 
-  @ManyToOne
-  @JoinColumn(name = "last_chapter_id") // Nullable if it's a donghua
-  private Chapter lastChapter;
+  @Column(name = "watched_duration")
+  private Integer watchedDuration;
 
+  @Column(name = "is_completed")
+  private boolean isCompleted = false;
+
+  @Column(name = "last_watched_at")
+  private LocalDateTime lastWatchedAt = LocalDateTime.now();
+
+  @Column(name = "created_at", updatable = false)
+  private LocalDateTime createdAt = LocalDateTime.now();
+
+  @Column(name = "updated_at")
   private LocalDateTime updatedAt = LocalDateTime.now();
+
+  @PreUpdate
+  public void preUpdate() {
+    this.updatedAt = LocalDateTime.now();
+  }
 }
